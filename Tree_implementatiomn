@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+#include<vector>
+template<typename t>
+class treeNode {
+public:
+	t data;
+	vector<treeNode<t>*>child;
+	treeNode(int data) {
+		this->data = data;
+	}
+};
+void print(treeNode<int>*root) {
+	if (root == NULL) {
+		return;               // this is not a base case this is edge case
+	}
+	cout << root->data << " ";
+	for (int i = 0; i < root->child.size(); i++) {
+		print(root->child[i]);
+	}
+
+}
+int main() {
+	treeNode<int>*root = new treeNode<int>(1);
+	treeNode<int>*node1 = new treeNode<int>(2);
+	treeNode<int>*node2 = new treeNode<int>(3);
+	root->child.push_back(node1);
+	root->child.push_back(node2);
+	print(root);
+}
