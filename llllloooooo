@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+int main()
+{
+	int s, n;
+	cin >> s >> n;
+	vector<pair<int, int>> v;
+	int a, b;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a >> b;
+		v.push_back( make_pair(a, b));
+
+	}
+	sort(v.begin(), v.end());
+
+	int current = s;
+	int temp = 1;
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i].first >= current)
+		{
+
+			temp = 0;
+			break;
+		}
+		else
+		{
+			current += v[i].second;
+		}
+	}
+	cout << ((temp) ? "YES" : "NO");
+}
+
